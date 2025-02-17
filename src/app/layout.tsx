@@ -26,9 +26,7 @@ export default function RootLayout({
             <body
                 className={cn("min-h-screen bg-dark-300 font-sans antialiased", fontSans.variable)}
             >
-                <ThemeProvider attribute="class" defaultTheme="dark">
-                    {children}
-                </ThemeProvider>
+                <ThemeProvider attribute="class">{children}</ThemeProvider>
             </body>
         </html>
     );
