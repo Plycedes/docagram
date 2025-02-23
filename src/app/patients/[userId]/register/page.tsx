@@ -1,7 +1,7 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
+
+import RegisterForm from "@/components/forms/RegisterForm";
 
 const Register = () => {
     return (
@@ -15,6 +15,7 @@ const Register = () => {
                         alt="patient"
                         className="mb-12 h-10 w-fit"
                     />
+                    <RegisterForm />
                     <div className="text-14-regular mt-20 flex justify-between">
                         <p className="justify-items-end text-dark-600 xl:text-left">
                             © 2020 Docagram
@@ -25,7 +26,6 @@ const Register = () => {
                     </div>
                 </div>
             </section>
-
             <Image
                 src="/assets/images/register-img.png"
                 height={1000}
