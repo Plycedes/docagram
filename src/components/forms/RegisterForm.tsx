@@ -12,6 +12,9 @@ import { useRouter } from "next/navigation";
 
 import { createUser } from "@/lib/actions/patient.actions";
 import { FormFieldType } from "./PatientForm";
+import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
+import { GenderOptions } from "../../../constants";
+import { Label } from "@radix-ui/react-label";
 
 const RegisterForm = ({ user }: { user: User }) => {
     const [isLoading, setIsLoading] = useState(false);
@@ -83,7 +86,25 @@ const RegisterForm = ({ user }: { user: User }) => {
                         control={form.control}
                         name="gender"
                         label="Gender"
-                        renderSkeleton={(field) => <FormControl></FormControl>}
+                        renderSkeleton={(field) => (
+                            <FormControl>
+                                <RadioGroup
+                                    className="flex h-11 gap-6 xl:justify-between"
+                                    onValueChange={field.onChange}
+                                    defaultValue={field.value}
+                                >
+                                    {GenderOptions.map((gender) => (
+                                        <div key={gender} className="radio-group">
+                                            <RadioGroupItem value={gender} id={gender}>
+                                                <Label htmlFor={gender} className="cursor-point">
+                                                    {gender}
+                                                </Label>
+                                            </RadioGroupItem>
+                                        </div>
+                                    ))}
+                                </RadioGroup>
+                            </FormControl>
+                        )}
                     />
                 </div>
                 <SubmitButton isLoading={isLoading}>Get Started</SubmitButton>
