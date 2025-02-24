@@ -14,7 +14,7 @@ import { createUser } from "@/lib/actions/patient.actions";
 import { FormFieldType } from "./PatientForm";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import { GenderOptions } from "../../../constants";
-import { Label } from "@radix-ui/react-label";
+import { Label } from "../ui/label";
 
 const RegisterForm = ({ user }: { user: User }) => {
     const [isLoading, setIsLoading] = useState(false);
@@ -93,11 +93,11 @@ const RegisterForm = ({ user }: { user: User }) => {
                                     onValueChange={field.onChange}
                                     defaultValue={field.value}
                                 >
-                                    {GenderOptions.map((gender) => (
-                                        <div key={gender} className="radio-group">
-                                            <RadioGroupItem value={gender} id={gender}>
-                                                <Label htmlFor={gender} className="cursor-point">
-                                                    {gender}
+                                    {GenderOptions.map((option, i) => (
+                                        <div key={option + i} className="radio-group">
+                                            <RadioGroupItem value={option} id={option}>
+                                                <Label htmlFor={option} className="cursor-pointer">
+                                                    {option}
                                                 </Label>
                                             </RadioGroupItem>
                                         </div>
