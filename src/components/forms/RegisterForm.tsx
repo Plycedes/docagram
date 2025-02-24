@@ -3,7 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Form } from "@/components/ui/form";
+import { Form, FormControl } from "@/components/ui/form";
 import CustomFormField from "../CustomFormField";
 import SubmitButton from "../SubmitButton";
 import { useState } from "react";
@@ -53,6 +53,39 @@ const RegisterForm = ({ user }: { user: User }) => {
                     iconSrc="/assets/icons/user.svg"
                     iconAlt="user"
                 />
+                <div className="flex felx-col gap-6 xl:flex-row">
+                    <CustomFormField
+                        fieldType={FormFieldType.INPUT}
+                        control={form.control}
+                        name="email"
+                        label="Email"
+                        placeholder="eren@shiganshina.com"
+                        iconSrc="/assets/icons/email.svg"
+                        iconAlt="email"
+                    />
+                    <CustomFormField
+                        fieldType={FormFieldType.PHONE_INPUT}
+                        control={form.control}
+                        name="phone"
+                        label="Phone Number"
+                        placeholder="(91) 12345-67890"
+                    />
+                </div>
+                <div className="flex felx-col gap-6 xl:flex-row">
+                    <CustomFormField
+                        fieldType={FormFieldType.DATE_PICKER}
+                        control={form.control}
+                        name="birthDate"
+                        label="Date of Birth"
+                    />
+                    <CustomFormField
+                        fieldType={FormFieldType.SKELETON}
+                        control={form.control}
+                        name="gender"
+                        label="Gender"
+                        renderSkeleton={(field) => <FormControl></FormControl>}
+                    />
+                </div>
                 <SubmitButton isLoading={isLoading}>Get Started</SubmitButton>
             </form>
         </Form>
