@@ -11,18 +11,9 @@ import { UserFormValidation } from "@/lib/validation";
 import { useRouter } from "next/navigation";
 
 import { createUser } from "@/lib/actions/patient.actions";
+import { FormFieldType } from "./PatientForm";
 
-export enum FormFieldType {
-    INPUT = "input",
-    CHECKBOX = "checkbox",
-    TEXTAREA = "textarea",
-    PHONE_INPUT = "phoneInput",
-    DATE_PICKER = "datePicker",
-    SELECT = "select",
-    SKELETON = "skeleton",
-}
-
-const RegisterForm = () => {
+const RegisterForm = ({ user }: { user: User }) => {
     const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
     const form = useForm<z.infer<typeof UserFormValidation>>({
@@ -61,22 +52,6 @@ const RegisterForm = () => {
                     placeholder="Eren Yeager"
                     iconSrc="/assets/icons/user.svg"
                     iconAlt="user"
-                />
-                <CustomFormField
-                    fieldType={FormFieldType.INPUT}
-                    control={form.control}
-                    name="email"
-                    label="Email"
-                    placeholder="eren@shiganshina.com"
-                    iconSrc="/assets/icons/email.svg"
-                    iconAlt="email"
-                />
-                <CustomFormField
-                    fieldType={FormFieldType.PHONE_INPUT}
-                    control={form.control}
-                    name="phone"
-                    label="Phone Number"
-                    placeholder="(91) 12345-67890"
                 />
                 <SubmitButton isLoading={isLoading}>Get Started</SubmitButton>
             </form>
